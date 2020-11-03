@@ -1,0 +1,6 @@
+line:
+  bot:
+    channel-token: ${line.channel.token.value}
+    channel-secret: ${line.channel.secret.value}
+    handler:
+      path: /callback
