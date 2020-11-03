@@ -1,8 +1,9 @@
 package org.azukazu.gtm.infrastructure.transmission.photozou
 
+import org.azukazu.gtm.domain.model.SearchWord
+import org.azukazu.gtm.domain.model.Url
+import org.azukazu.gtm.domain.model.ImageInfo
 import org.azukazu.gtm.infrastructure.transmission.photozou.dto.PhotozouApiDto
-import org.azukazu.gtm.model.SearchWord
-import org.azukazu.gtm.model.photozou.ImageInfo
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestTemplate
 import java.rmi.UnexpectedException
@@ -22,19 +23,30 @@ class PhotozouClient(
     /**
      * 画像の検索
      */
-    fun searchImages(searchWord: SearchWord): List<ImageInfo> {
+    fun searchImages(searchWord: SearchWord): List<ImageInfo>? {
 
         val uri = buildString {
             append(PHOTOZO_SEARCH_API)
-            append("?keyword==${searchWord.value}")
+            append("?keyword=${searchWord.value}")
         }
 
         val responseDto = restTemplate.getForObject(
             uri,
             PhotozouApiDto::class.java)
-            ?: throw UnexpectedException("予期せぬエラー")
+            ?: throw UnexpectedException("API使用時に予期せぬエラー")
 
-        return responseDto.info.photo
-            .map { p -> p.toImageInfo() }
+        if (!responseDto.isValid()) {
+            throw UnexpectedException(responseDto.err!!.joinToString(",\n") { e -> e.code })
+        }
+
+        return responseDto.info!!.photo
+            ?.let { photoInfo ->
+                photoInfo.map { photoDetail ->
+                    ImageInfo.of(
+                        Url(photoDetail.original_image_url),
+                        Url(photoDetail.thumbnail_image_url)
+                    )
+                }
+            }
     }
 }
