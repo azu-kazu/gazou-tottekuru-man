@@ -1,4 +1,6 @@
-package org.azukazu.gtm.domain.model
+package org.azukazu.gtm.domain.model.search_word
+
+import org.azukazu.gtm.domain.model.GeneralErrorMessage
 
 /**
  * トリガーワード

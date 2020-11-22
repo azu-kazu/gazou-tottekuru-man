@@ -1,6 +1,6 @@
 package org.azukazu.gtm.application
 
-import org.azukazu.gtm.domain.model.TriggerWord
+import org.azukazu.gtm.domain.model.search_word.TriggerWord
 import org.springframework.stereotype.Service
 
 /**

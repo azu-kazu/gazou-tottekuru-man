@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j
 import org.azukazu.gtm.application.JudgeNeedsProcessApplicationService
 import org.azukazu.gtm.application.NotifyLineOfErrorMessageApplicationService
 import org.azukazu.gtm.application.NotifyLineOfImageSearchResultApplicationService
-import org.azukazu.gtm.domain.model.SearchWord
+import org.azukazu.gtm.domain.model.search_word.SearchWord
 import org.azukazu.gtm.domain.model.line.ReplyToken
 
 @Slf4j

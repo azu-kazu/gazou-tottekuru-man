@@ -1,8 +1,8 @@
 package org.azukazu.gtm.application
 
-import org.azukazu.gtm.domain.model.ErrorMessage
+import org.azukazu.gtm.domain.model.ErrorMessageInterface
 import org.azukazu.gtm.domain.model.GeneralErrorMessage
-import org.azukazu.gtm.domain.model.InvalidSearchWordException
+import org.azukazu.gtm.domain.model.search_word.InvalidSearchWordException
 import org.azukazu.gtm.domain.model.line.ReplyToken
 import org.azukazu.gtm.infrastructure.transmission.line.LineNotificator
 import org.slf4j.LoggerFactory
@@ -27,7 +27,7 @@ class NotifyLineOfErrorMessageApplicationService(
         logger.info("エラーメッセージの送信が完了. リプライトークン = {},", replyToken.value)
     }
 
-    private fun selectErrorMessage(throwable: Throwable): ErrorMessage =
+    private fun selectErrorMessage(throwable: Throwable): ErrorMessageInterface =
         when (throwable) {
             is InvalidSearchWordException -> {
                 throwable.errorMessage

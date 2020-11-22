@@ -2,7 +2,7 @@ package org.azukazu.gtm.application
 
 import org.azukazu.gtm.infrastructure.transmission.line.LineNotificator
 import org.azukazu.gtm.infrastructure.transmission.photozou.PhotozouClient
-import org.azukazu.gtm.domain.model.SearchWord
+import org.azukazu.gtm.domain.model.search_word.SearchWord
 import org.azukazu.gtm.domain.model.line.ReplyToken
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service

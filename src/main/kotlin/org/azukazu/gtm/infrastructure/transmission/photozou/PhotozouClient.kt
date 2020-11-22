@@ -1,8 +1,8 @@
 package org.azukazu.gtm.infrastructure.transmission.photozou
 
-import org.azukazu.gtm.domain.model.SearchWord
-import org.azukazu.gtm.domain.model.Url
-import org.azukazu.gtm.domain.model.ImageInfo
+import org.azukazu.gtm.domain.model.search_word.SearchWord
+import org.azukazu.gtm.domain.model.image_info.Url
+import org.azukazu.gtm.domain.model.image_info.ImageInfo
 import org.azukazu.gtm.infrastructure.transmission.photozou.dto.PhotozouApiDto
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestTemplate
