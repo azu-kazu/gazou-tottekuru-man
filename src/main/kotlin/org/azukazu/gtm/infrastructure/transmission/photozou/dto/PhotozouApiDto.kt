@@ -1,21 +1,22 @@
 package org.azukazu.gtm.infrastructure.transmission.photozou.dto
 
-import org.azukazu.gtm.model.Url
-import org.azukazu.gtm.model.photozou.ImageInfo
-
 data class PhotozouApiDto(
     val stat: String,
-    val info: PhotozoApiPhotoInfoDto
-)
+    val info: PhotozouApiPhotoInfoDto?,
+    val err: List<PhotozouApiErrorDto>?
+) {
+    fun isValid(): Boolean =
+        stat != "fail" && err == null
+}
 
-data class PhotozoApiPhotoInfoDto(
+data class PhotozouApiPhotoInfoDto(
     var CONTENTS_VIEW_LANG: Boolean,
     val NO_VIEW_FCEBOOK_TWITTER: Boolean,
     val photo_num: Int,
-    val photo: List<PhotozoApiPhotoInfoDetailDto>
+    val photo: List<PhotozouApiPhotoInfoDetailDto>?
 )
 
-data class PhotozoApiPhotoInfoDetailDto(
+data class PhotozouApiPhotoInfoDetailDto(
     var photo_id: Int,
     val user_id: Int,
     val album_id: Int,
@@ -34,10 +35,9 @@ data class PhotozoApiPhotoInfoDetailDto(
     val thumbnail_image_url: String,
     val large_tag: String,
     val medium_tag: String
-) {
-    fun toImageInfo(): ImageInfo =
-        ImageInfo(
-            Url(original_image_url),
-            Url(thumbnail_image_url)
-        )
-}
+)
+
+data class PhotozouApiErrorDto(
+    var code: String,
+    val msg: String
+)

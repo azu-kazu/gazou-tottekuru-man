@@ -2,8 +2,8 @@ package org.azukazu.gtm.application
 
 import org.azukazu.gtm.infrastructure.transmission.line.LineNotificator
 import org.azukazu.gtm.infrastructure.transmission.photozou.PhotozouClient
-import org.azukazu.gtm.model.SearchWord
-import org.azukazu.gtm.model.line.ReplyToken
+import org.azukazu.gtm.domain.model.SearchWord
+import org.azukazu.gtm.domain.model.line.ReplyToken
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
@@ -17,21 +17,18 @@ class NotifyLineOfImageSearchResultApplicationService(
 ) {
 
     /**
-     * 画像を検索し、ランダムに選んだ1枚をLINEに通知する
+     * ランダムに選んだ1枚を通知する
      */
-    fun notifyLineOfImageSearchResultAtRandom(replyToken: ReplyToken,
-                                              searchWord: SearchWord) {
+    fun notifyImageAtRandom(replyToken: ReplyToken,
+                            searchWord: SearchWord) {
 
-        logger.info("画像検索を開始. 検索ワード = {}", searchWord.value)
+        logger.info("検索画像の通知処理を開始. リプライトークン = {}, 検索ワード = {}", replyToken.value, searchWord.value)
 
-        val images = photozouClient.searchImages(searchWord)
+        photozouClient.searchImages(searchWord)
+            ?.let { lineNotificator.notifyLineOfImage(replyToken, searchWord, it.shuffled()[0]) }
+            ?: lineNotificator.notifyLineOfMessage(replyToken, "検索結果が0件です。")
 
-        lineNotificator.notifyLineOfImage(
-            replyToken,
-            searchWord,
-            images.shuffled()[0])
-
-        logger.info("画像通知が完了. 検索ワード = {}", searchWord.value)
+        logger.info("検索結果の通知が完了. リプライトークン = {}", replyToken.value)
     }
 
     companion object {

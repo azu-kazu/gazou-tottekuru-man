@@ -1,4 +1,4 @@
-package org.azukazu.gtm.model
+package org.azukazu.gtm.domain.model
 
 import java.net.URI
 
