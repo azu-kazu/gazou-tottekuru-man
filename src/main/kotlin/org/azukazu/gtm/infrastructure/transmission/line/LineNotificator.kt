@@ -5,10 +5,10 @@ import com.linecorp.bot.model.ReplyMessage
 import com.linecorp.bot.model.message.ImageMessage
 import com.linecorp.bot.model.message.TextMessage
 import com.linecorp.bot.spring.boot.annotation.LineMessageHandler
-import org.azukazu.gtm.domain.model.ErrorMessage
-import org.azukazu.gtm.domain.model.SearchWord
+import org.azukazu.gtm.domain.model.ErrorMessageInterface
+import org.azukazu.gtm.domain.model.search_word.SearchWord
 import org.azukazu.gtm.domain.model.line.ReplyToken
-import org.azukazu.gtm.domain.model.ImageInfo
+import org.azukazu.gtm.domain.model.image_info.ImageInfo
 import org.springframework.stereotype.Component
 
 /**
@@ -74,7 +74,7 @@ class LineNotificator(
      */
     fun notifyLineOfErrorMessage(
         replyToken: ReplyToken,
-        errorMessage: ErrorMessage) {
+        errorMessage: ErrorMessageInterface) {
 
         notifyLineOfMessage(replyToken, errorMessage.value())
     }

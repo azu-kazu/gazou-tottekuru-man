@@ -3,7 +3,7 @@ package org.azukazu.gtm.domain.model
 /**
  * エラーメッセージ
  */
-interface ErrorMessage {
+interface ErrorMessageInterface {
 
     /**
      * メッセージの取得

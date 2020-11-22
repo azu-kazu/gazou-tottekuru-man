@@ -1,4 +1,4 @@
-package org.azukazu.gtm.domain.model
+package org.azukazu.gtm.domain.model.image_info
 
 /**
  * 画像情報
