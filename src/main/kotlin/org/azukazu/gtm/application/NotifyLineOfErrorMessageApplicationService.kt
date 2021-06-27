@@ -3,8 +3,7 @@ package org.azukazu.gtm.application
 import org.azukazu.gtm.domain.model.ErrorMessageInterface
 import org.azukazu.gtm.domain.model.GeneralErrorMessage
 import org.azukazu.gtm.domain.model.search_word.InvalidSearchWordException
-import org.azukazu.gtm.domain.model.line.ReplyToken
-import org.azukazu.gtm.infrastructure.transmission.line.LineNotificator
+import org.azukazu.gtm.infrastructure.transmission.line.messaging_api.LineMessagingApiClient
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
@@ -22,7 +21,7 @@ class NotifyLineOfErrorMessageApplicationService(
 
         logger.info("エラーメッセージの送信. リプライトークン = {}, エラーメッセージ = {}", replyToken.value, errorMessage)
 
-        lineNotificator.notifyLineOfErrorMessage(replyToken, errorMessage)
+        lineNotificator.notifyErrorMessage(replyToken, errorMessage)
 
         logger.info("エラーメッセージの送信が完了. リプライトークン = {},", replyToken.value)
     }

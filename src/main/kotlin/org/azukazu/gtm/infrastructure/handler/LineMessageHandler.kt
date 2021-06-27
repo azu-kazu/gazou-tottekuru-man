@@ -9,7 +9,7 @@ import org.azukazu.gtm.application.JudgeNeedsProcessApplicationService
 import org.azukazu.gtm.application.NotifyLineOfErrorMessageApplicationService
 import org.azukazu.gtm.application.NotifyLineOfImageSearchResultApplicationService
 import org.azukazu.gtm.domain.model.search_word.SearchWord
-import org.azukazu.gtm.domain.model.line.ReplyToken
+import org.azukazu.gtm.application.ReplyToken
 
 @Slf4j
 @LineMessageHandler

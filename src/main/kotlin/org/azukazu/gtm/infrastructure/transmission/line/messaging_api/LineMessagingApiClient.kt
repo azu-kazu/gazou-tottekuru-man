@@ -1,29 +1,27 @@
-package org.azukazu.gtm.infrastructure.transmission.line
+package org.azukazu.gtm.infrastructure.transmission.line.messaging_api
 
 import com.linecorp.bot.client.LineMessagingClient
 import com.linecorp.bot.model.ReplyMessage
 import com.linecorp.bot.model.message.ImageMessage
 import com.linecorp.bot.model.message.TextMessage
 import com.linecorp.bot.spring.boot.annotation.LineMessageHandler
+import org.azukazu.gtm.application.LineNotificator
 import org.azukazu.gtm.domain.model.ErrorMessageInterface
-import org.azukazu.gtm.domain.model.search_word.SearchWord
-import org.azukazu.gtm.domain.model.line.ReplyToken
 import org.azukazu.gtm.domain.model.image_info.ImageInfo
+import org.azukazu.gtm.application.ReplyToken
+import org.azukazu.gtm.domain.model.search_word.SearchWord
 import org.springframework.stereotype.Component
 
 /**
- * LINEへの通知を行うNotificator
+ * LINE Messaging API を使用するクライアント
  */
 @Component
 @LineMessageHandler
-class LineNotificator(
+class LineMessagingApiClient(
     private val client: LineMessagingClient
-) {
+) : LineNotificator {
 
-    /**
-     * 画像付きメッセージを通知する
-     */
-    fun notifyLineOfImage(
+    override fun notifyOfMessageWithImage(
         replyToken: ReplyToken,
         searchWord: SearchWord,
         imageInfo: ImageInfo) {
@@ -55,10 +53,7 @@ class LineNotificator(
             )
         )
 
-    /**
-     * メッセージを通知する
-     */
-    fun notifyLineOfMessage(
+    override fun notifyOfMessage(
         replyToken: ReplyToken,
         text: String) {
 
@@ -69,14 +64,11 @@ class LineNotificator(
         client.replyMessage(replyMessage).get()
     }
 
-    /**
-     * エラーメッセージを通知する
-     */
-    fun notifyLineOfErrorMessage(
+    override fun notifyErrorMessage(
         replyToken: ReplyToken,
         errorMessage: ErrorMessageInterface) {
 
-        notifyLineOfMessage(replyToken, errorMessage.value())
+        notifyOfMessage(replyToken, errorMessage.value())
     }
 
     /**

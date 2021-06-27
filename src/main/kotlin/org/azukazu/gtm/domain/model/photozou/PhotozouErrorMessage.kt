@@ -4,6 +4,7 @@ import org.azukazu.gtm.domain.model.ErrorMessageInterface
 
 /**
  * エラーメッセージ(フォト蔵)
+ * TODO: インフラ層に移動
  */
 enum class PhotozouErrorMessage(val value: String) : ErrorMessageInterface {
 
