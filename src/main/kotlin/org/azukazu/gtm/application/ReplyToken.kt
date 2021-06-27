@@ -1,4 +1,4 @@
-package org.azukazu.gtm.domain.model.line
+package org.azukazu.gtm.application
 
 /**
  * リプライトークン

@@ -1,4 +1,4 @@
-package org.azukazu.gtm.infrastructure.transmission.photozou.dto
+package org.azukazu.gtm.infrastructure.transmission.photozou.photozou_api.dto
 
 data class PhotozouApiDto(
     val stat: String,

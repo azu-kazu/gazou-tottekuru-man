@@ -25,6 +25,7 @@ class SearchWord(val value: String) {
                 throw InvalidSearchWordException(GeneralErrorMessage.SEARCH_WORD_IS_BLANK)
             }
 
+            // TODO: バリデーションをインフラ層に移動
             if (Pattern.matches("^[0-9a-zA-Z-~ -/:-@\\[-~]{1,2}$", searchWordValue)) {
                 throw InvalidSearchWordException(PhotozouErrorMessage.SEARCH_WORD_IS_TOO_SHORT)
             }

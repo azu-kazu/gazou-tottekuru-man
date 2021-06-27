@@ -1,9 +1,6 @@
 package org.azukazu.gtm.application
 
-import org.azukazu.gtm.infrastructure.transmission.line.LineNotificator
-import org.azukazu.gtm.infrastructure.transmission.photozou.PhotozouClient
 import org.azukazu.gtm.domain.model.search_word.SearchWord
-import org.azukazu.gtm.domain.model.line.ReplyToken
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
@@ -25,8 +22,8 @@ class NotifyLineOfImageSearchResultApplicationService(
         logger.info("検索画像の通知処理を開始. リプライトークン = {}, 検索ワード = {}", replyToken.value, searchWord.value)
 
         photozouClient.searchImages(searchWord)
-            ?.let { lineNotificator.notifyLineOfImage(replyToken, searchWord, it.shuffled()[0]) }
-            ?: lineNotificator.notifyLineOfMessage(replyToken, "検索結果が0件です。")
+            ?.let { lineNotificator.notifyOfMessageWithImage(replyToken, searchWord, it.shuffled()[0]) }
+            ?: lineNotificator.notifyOfMessage(replyToken, "検索結果が0件です。")
 
         logger.info("検索結果の通知が完了. リプライトークン = {}", replyToken.value)
     }
