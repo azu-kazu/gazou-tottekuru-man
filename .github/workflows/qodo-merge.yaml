@@ -24,6 +24,6 @@ jobs:
           PR_CODE_SUGGESTIONS.PERSISTENT_COMMENT: "true"
           PR_ADD_DOCS.PERSISTENT_COMMENT: "true"
           PR_REVIEWER.INLINE_CODE_COMMENTS: "true"
-          PR_DESCRIPTION.EXTRA_INSTRUCTIONS: "日本語で記述してください。"
-          PR_REVIEWER.EXTRA_INSTRUCTIONS: "日本語で記述してください。"
-          PR_CODE_SUGGESTIONS.EXTRA_INSTRUCTIONS: "日本語で回答してください。"
+          PR_DESCRIPTION.EXTRA_INSTRUCTIONS: '日本語で記述してください。'
+          PR_REVIEWER.EXTRA_INSTRUCTIONS: '日本語で記述してください。'
+          PR_CODE_SUGGESTIONS.EXTRA_INSTRUCTIONS: '日本語で回答してください。'
