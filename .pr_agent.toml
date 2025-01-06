@@ -1,0 +1,17 @@
+[pr_reviewer] # /review #
+extra_instructions = "answer in Japanese"
+
+[pr_description] # /describe #
+extra_instructions = "answer in Japanese"
+
+[pr_questions] # /ask #
+extra_instructions = "answer in Japanese"
+
+[pr_code_suggestions] # /improve #
+extra_instructions = "answer in Japanese"
+
+[pr_update_changelog] # /update_changelog #
+extra_instructions = "answer in Japanese"
+
+[pr_similar_issue] # /similar_issue #
+extra_instructions = "answer in Japanese"
