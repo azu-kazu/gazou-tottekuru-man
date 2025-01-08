@@ -1,4 +1,6 @@
 [pr_description] # /describe
+publish_labels = false
+enable_pr_type = false
 extra_instructions = "Descriptionの説明は日本語で回答してください" # 単に日本語で回答してと伝えても英語が出力されてしまう
 
 [pr_reviewer] # /review
