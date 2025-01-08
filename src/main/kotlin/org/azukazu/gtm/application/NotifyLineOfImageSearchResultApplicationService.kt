@@ -1,6 +1,7 @@
 package org.azukazu.gtm.application
 
 import org.azukazu.gtm.domain.model.search_word.SearchWord
+import org.azukazu.gtm.domain.service.SearchTargetChecker
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service
  */
 @Service
 class NotifyLineOfImageSearchResultApplicationService(
+    private val searchTargetChecker: SearchTargetChecker,
     private val photozouClient: PhotozouClient,
     private val lineNotificator: LineNotificator
 ) {
@@ -17,7 +19,13 @@ class NotifyLineOfImageSearchResultApplicationService(
      * ランダムに選んだ1枚を通知する
      */
     fun notifyImageAtRandom(replyToken: ReplyToken,
-                            searchWord: SearchWord) {
+                            text: String) {
+
+        if (!searchTargetChecker.check(text)) {
+            return
+        }
+
+        val searchWord = SearchWord.of(text)
 
         logger.info("検索画像の通知処理を開始. リプライトークン = {}, 検索ワード = {}", replyToken.value, searchWord.value)
 
