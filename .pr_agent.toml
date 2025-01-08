@@ -1,17 +1,13 @@
-[pr_reviewer] # /review #
-extra_instructions = "answer in Japanese"
+[pr_description] # /describe
+publish_labels = false
+enable_pr_type = false
+extra_instructions = "Descriptionの説明は日本語で回答してください" # 単に日本語で回答してと伝えても英語が出力されてしまう
 
-[pr_description] # /describe #
-extra_instructions = "answer in Japanese"
+[pr_reviewer] # /review
+extra_instructions = "日本語で回答してください"
 
-[pr_questions] # /ask #
-extra_instructions = "answer in Japanese"
+[pr_questions] # /ask
+extra_instructions = "日本語で回答してください"
 
-[pr_code_suggestions] # /improve #
-extra_instructions = "answer in Japanese"
-
-[pr_update_changelog] # /update_changelog #
-extra_instructions = "answer in Japanese"
-
-[pr_similar_issue] # /similar_issue #
-extra_instructions = "answer in Japanese"
+[pr_code_suggestions] # /improve
+extra_instructions = "日本語で回答してください"
