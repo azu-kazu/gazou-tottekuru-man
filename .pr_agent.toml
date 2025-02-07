@@ -1,3 +1,7 @@
+[config]
+model="google_ai_studio/gemini-2.0-flash-exp"
+fallback_models=["google_ai_studio/gemini-2.0-flash-exp"]
+
 [pr_description] # /describe
 publish_labels = false
 enable_pr_type = false
